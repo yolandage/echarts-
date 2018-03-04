@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height: 400px;"></div>
+    <div id="chart" style="width: 600px;height: 400px;"></div>
+    <div id="chart2" style="width: 600px;height: 400px;"></div>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+    <script src="echarts.js"></script>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'), 'light');
+        var myChart1 = echarts.init(document.getElementById('chart'), 'dark');
+        var myChart2 = echarts.init(document.getElementById('chart'), 'light');
+        var option = {
+            title: {
+                show: true,
+                text: '案场助理个人\n中心',
+                link: 'https://www.baidu.com/', //这里要加https:// 不然到不了链接
+                textStyle: {
+                    color: '#f00',
+                    align: {
+                        align: 'center',
+                        rich: {
+                            a: {
+                                align: 'center'
+                            }
+                        }
+                    },
+                }
+            },
+            legend: {  // 图例组件
+                type: 'plain',
+                left: 200,
+                itemGap: 10,
+                formatter: null, // 用来格式化图例文本
+                textStyle: {}, //    图例的公用文本样式
+                tooltip: {}, //可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip
+                data: [{
+                    name: '提莫',
+                    icon: 'circle',
+                    textStyle: {
+                        fontSize: '14px'
+                    }
+                }, {
+                    name: '赵信',
+                    icon: 'circle',
+                    textStyle: {
+                        fontSize: '18px'
+                    }
+                }],
+                backgroundColor: '#abcdef', //设置legend的背景颜色
+                borderWidth: 3, //设置legend的边框的大小
+            },
+            grid: {
+                show: true, //是否显示直角坐标系网格默认为false
+                containLabel: true, //这常用于『防止标签溢出』的场景，标签溢出指的是，标签长度动态变化时，可能会溢出容器或者覆盖其他组件。
+                backgroundColor: '#f00', //改变网格的颜色
+
+            },
+            tooltip: {
+                trigger: 'axis',
+                // position: ['50%', '50%']  提示框出现的位置   
+            },
+            xAxis: {
+                data: ['苹果', '香蕉', '栗子', '梨子', '葡萄'],
+                // position: 'top',
+                offset: 15, //在有多个x轴时候有效
+                type: 'category',
+                // nameLocation: 'start'
+                // boundaryGap: false,
+                // inverse: true,
+                position: 'top', // 将x轴位置调整
+            },
+            yAxis: {
+                // position: 'right'    
+                inverse: true,
+            },
+            series: [{
+                name: '提莫',
+                type: 'bar',
+                backgroundColor: '#666',
+                data: [5, 20, 20, 30, 10]
+            }, {
+                name: '赵信',
+                type: 'bar',
+                data: [5, 30, 20, 30, 6]
+            }]
+        }
+        myChart.setOption(option)
+    </script>
+</body>
+
+</html>
